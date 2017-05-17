@@ -1,2 +1,1 @@
-# TestScripts
-Used to create sample test scripts
+This Repo is used for my test scripts
