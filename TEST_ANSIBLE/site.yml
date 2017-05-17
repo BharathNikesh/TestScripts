@@ -1,0 +1,18 @@
+---
+# Playbook to run the script on remote hosts
+- name: Ping
+  hosts: 10.30.12.240
+  remote_user: stack
+
+  tasks:
+
+  - copy:
+      src: /tmp/getfirstname.sh
+      dest: /tmp/getfirstname.sh
+
+  - copy:
+      src: /tmp/testfile.txt
+      dest: /tmp/testfile.txt
+
+  - name: Execute the command in remote host
+    command : bash /tmp/getfirstname.sh testfile.txt >> /tmp/log.txt
