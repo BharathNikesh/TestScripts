@@ -3,8 +3,7 @@
 #Script to print first name 
 
 if [[ $# -eq 0 ]];then
-    echo "Usage: ./getfirstname.sh <file containing the fullname>"
-    echo 
+    echo -e "Usage: ./getfirstname.sh <file containing the fullname> \n"
     echo "Eg) ./getfirstname.sh testfile.txt"
     exit 0;
 fi
