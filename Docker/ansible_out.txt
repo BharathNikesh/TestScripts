@@ -1,0 +1,47 @@
+PLAY [all] *********************************************************************
+
+TASK [docker : Install python setup tools] *************************************
+ok: [x.x.x.x]
+
+TASK [docker : yum Install Pypi] ***********************************************
+ok: [x.x.x.x]
+
+TASK [docker : Install docker-py] **********************************************
+ok: [x.x.x.x]
+
+TASK [docker : Install Docker] *************************************************
+ok: [x.x.x.x]
+
+TASK [docker : Make sure Docker is running] ************************************
+ok: [x.x.x.x]
+
+TASK [docker : pull image] *****************************************************
+ok: [x.x.x.x]
+
+TASK [docker : create a docker container] **************************************
+changed: [x.x.x.x]
+
+TASK [docker : Fetching the shell script that displays firstname from the file]
+changed: [x.x.x.x]
+
+TASK [docker : Fetching the python script that displays the lastname from the file] ***
+changed: [x.x.x.x]
+
+TASK [docker : Fetching the text file containg the full name] ******************
+changed: [x.x.x.x]
+
+TASK [docker : Make the script executable] *************************************
+changed: [x.x.x.x]
+
+TASK [docker : Make the script executable] *************************************
+changed: [x.x.x.x]
+
+TASK [docker : Execute the shell script on the remote host] ********************
+changed: [x.x.x.x]
+
+TASK [docker : Execute the python script on the remote host] *******************
+changed: [x.x.x.x]
+
+PLAY RECAP *********************************************************************
+x.x.x.x             : ok=14   changed=8    unreachable=0    failed=0
+

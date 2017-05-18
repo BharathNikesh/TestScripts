@@ -1,0 +1,575 @@
+ansible-playbook -i HOSTS_DIR/hosts.sdc docker_site.yml  --become-user=root -u inkadmin -vvv
+Using /Users/bgorla/.ansible.cfg as config file
+[DEPRECATION WARNING]: Instead of sudo/sudo_user, use become/become_user and
+make sure become_method is 'sudo' (default).
+This feature will be removed in a
+future release. Deprecation warnings can be disabled by setting
+deprecation_warnings=False in ansible.cfg.
+statically included: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/download_docker_image.yml
+
+PLAYBOOK: docker_site.yml ******************************************************
+1 plays in docker_site.yml
+
+PLAY [all] *********************************************************************
+
+TASK [docker : Install python setup tools] *************************************
+task path: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/main.yml:4
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/packaging/os/yum.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089070.51-119291471421615 `" && echo ansible-tmp-1495089070.51-119291471421615="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089070.51-119291471421615 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmpVWWFIz TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089070.51-119291471421615/yum.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089070.51-119291471421615/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089070.51-119291471421615/yum.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-fpfvlixaeqdflptlydapznkazwirjask; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089070.51-119291471421615/yum.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089070.51-119291471421615/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+ok: [172.16.101.209] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "conf_file": null,
+            "disable_gpg_check": false,
+            "disablerepo": null,
+            "enablerepo": null,
+            "exclude": null,
+            "install_repoquery": true,
+            "list": null,
+            "name": [
+                "python-setuptools"
+            ],
+            "state": "installed",
+            "update_cache": false,
+            "validate_certs": true
+        },
+        "module_name": "yum"
+    },
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "python-setuptools-0.6.10-3.el6.noarch providing python-setuptools is already installed"
+    ]
+}
+
+TASK [docker : yum Install Pypi] ***********************************************
+task path: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/main.yml:8
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/packaging/os/yum.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089073.18-143430962531332 `" && echo ansible-tmp-1495089073.18-143430962531332="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089073.18-143430962531332 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmpJtxP3K TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089073.18-143430962531332/yum.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089073.18-143430962531332/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089073.18-143430962531332/yum.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-wrrarowxjbdnjmwodkkxkwsyoqbdwhgb; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089073.18-143430962531332/yum.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089073.18-143430962531332/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+ok: [172.16.101.209] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "conf_file": null,
+            "disable_gpg_check": false,
+            "disablerepo": null,
+            "enablerepo": null,
+            "exclude": null,
+            "install_repoquery": true,
+            "list": null,
+            "name": [
+                "python-pip"
+            ],
+            "state": "latest",
+            "update_cache": false,
+            "validate_certs": true
+        },
+        "module_name": "yum"
+    },
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "All packages providing python-pip are up to date",
+        ""
+    ]
+}
+
+TASK [docker : Install docker-py] **********************************************
+task path: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/main.yml:13
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/packaging/language/pip.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089075.93-181945682696142 `" && echo ansible-tmp-1495089075.93-181945682696142="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089075.93-181945682696142 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmpaMsIGG TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089075.93-181945682696142/pip.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089075.93-181945682696142/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089075.93-181945682696142/pip.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-mgacmsjhroscffoukxkkwpzytunstocv; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089075.93-181945682696142/pip.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089075.93-181945682696142/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+ok: [172.16.101.209] => {
+    "changed": false,
+    "cmd": "/usr/bin/pip2 install docker-py",
+    "invocation": {
+        "module_args": {
+            "chdir": null,
+            "editable": true,
+            "executable": null,
+            "extra_args": null,
+            "name": [
+                "docker-py"
+            ],
+            "requirements": null,
+            "state": "present",
+            "umask": null,
+            "use_mirrors": true,
+            "version": null,
+            "virtualenv": null,
+            "virtualenv_command": "virtualenv",
+            "virtualenv_python": null,
+            "virtualenv_site_packages": false
+        },
+        "module_name": "pip"
+    },
+    "name": [
+        "docker-py"
+    ],
+    "requirements": null,
+    "state": "present",
+    "stderr": "You are using pip version 7.1.0, however version 9.0.1 is available.\nYou should consider upgrading via the 'pip install --upgrade pip' command.\n",
+    "stdout": "Requirement already satisfied (use --upgrade to upgrade): docker-py in /usr/lib/python2.6/site-packages\nRequirement already satisfied (use --upgrade to upgrade): docker-pycreds>=0.2.1 in /usr/lib/python2.6/site-packages (from docker-py)\nRequirement already satisfied (use --upgrade to upgrade): ipaddress>=1.0.16 in /usr/lib/python2.6/site-packages (from docker-py)\nRequirement already satisfied (use --upgrade to upgrade): requests!=2.11.0,>=2.5.2 in /usr/lib/python2.6/site-packages (from docker-py)\nRequirement already satisfied (use --upgrade to upgrade): six>=1.4.0 in /usr/lib/python2.6/site-packages (from docker-py)\nRequirement already satisfied (use --upgrade to upgrade): backports.ssl-match-hostname>=3.5 in /usr/lib/python2.6/site-packages (from docker-py)\nRequirement already satisfied (use --upgrade to upgrade): websocket-client>=0.32.0 in /usr/lib/python2.6/site-packages (from docker-py)\nRequirement already satisfied (use --upgrade to upgrade): argparse in /usr/lib/python2.6/site-packages (from websocket-client>=0.32.0->docker-py)\n",
+    "stdout_lines": [
+        "Requirement already satisfied (use --upgrade to upgrade): docker-py in /usr/lib/python2.6/site-packages",
+        "Requirement already satisfied (use --upgrade to upgrade): docker-pycreds>=0.2.1 in /usr/lib/python2.6/site-packages (from docker-py)",
+        "Requirement already satisfied (use --upgrade to upgrade): ipaddress>=1.0.16 in /usr/lib/python2.6/site-packages (from docker-py)",
+        "Requirement already satisfied (use --upgrade to upgrade): requests!=2.11.0,>=2.5.2 in /usr/lib/python2.6/site-packages (from docker-py)",
+        "Requirement already satisfied (use --upgrade to upgrade): six>=1.4.0 in /usr/lib/python2.6/site-packages (from docker-py)",
+        "Requirement already satisfied (use --upgrade to upgrade): backports.ssl-match-hostname>=3.5 in /usr/lib/python2.6/site-packages (from docker-py)",
+        "Requirement already satisfied (use --upgrade to upgrade): websocket-client>=0.32.0 in /usr/lib/python2.6/site-packages (from docker-py)",
+        "Requirement already satisfied (use --upgrade to upgrade): argparse in /usr/lib/python2.6/site-packages (from websocket-client>=0.32.0->docker-py)"
+    ],
+    "version": null,
+    "virtualenv": null
+}
+
+TASK [docker : Install Docker] *************************************************
+task path: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/main.yml:18
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/packaging/os/yum.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089077.69-218676244722494 `" && echo ansible-tmp-1495089077.69-218676244722494="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089077.69-218676244722494 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmptHhqUh TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089077.69-218676244722494/yum.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089077.69-218676244722494/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089077.69-218676244722494/yum.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-qrlyadypnwosesvfrehevclkbfwijcvf; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089077.69-218676244722494/yum.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089077.69-218676244722494/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+ok: [172.16.101.209] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "conf_file": null,
+            "disable_gpg_check": false,
+            "disablerepo": null,
+            "enablerepo": null,
+            "exclude": null,
+            "install_repoquery": true,
+            "list": null,
+            "name": [
+                "docker-io"
+            ],
+            "state": "latest",
+            "update_cache": false,
+            "validate_certs": true
+        },
+        "module_name": "yum"
+    },
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "All packages providing docker-io are up to date",
+        ""
+    ]
+}
+
+TASK [docker : Make sure Docker is running] ************************************
+task path: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/main.yml:22
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/system/setup.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089080.53-169988812070680 `" && echo ansible-tmp-1495089080.53-169988812070680="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089080.53-169988812070680 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmpaUS7xH TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089080.53-169988812070680/setup.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089080.53-169988812070680/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089080.53-169988812070680/setup.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-mxzwouhsccavfhrbbdefsccdurlvwxxv; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089080.53-169988812070680/setup.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089080.53-169988812070680/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/system/service.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089082.04-134462420315287 `" && echo ansible-tmp-1495089082.04-134462420315287="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089082.04-134462420315287 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmpez_vGP TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089082.04-134462420315287/service.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089082.04-134462420315287/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089082.04-134462420315287/service.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-pukhjuduhuykilamwijgujqbakrbcwdo; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089082.04-134462420315287/service.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089082.04-134462420315287/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+ok: [172.16.101.209] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "arguments": "",
+            "enabled": null,
+            "name": "docker",
+            "pattern": null,
+            "runlevel": "default",
+            "sleep": null,
+            "state": "started"
+        }
+    },
+    "name": "docker",
+    "state": "started"
+}
+
+TASK [docker : pull image] *****************************************************
+task path: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/download_docker_image.yml:3
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/cloud/docker/docker_image.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089083.54-220659340267081 `" && echo ansible-tmp-1495089083.54-220659340267081="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089083.54-220659340267081 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmp2Jut7c TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089083.54-220659340267081/docker_image.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089083.54-220659340267081/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089083.54-220659340267081/docker_image.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-ockegmbzxkwynupgqrwkthurlpmifpmm; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089083.54-220659340267081/docker_image.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089083.54-220659340267081/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+ok: [172.16.101.209] => {
+    "actions": [],
+    "changed": false,
+    "image": {},
+    "invocation": {
+        "module_args": {
+            "api_version": null,
+            "archive_path": null,
+            "buildargs": null,
+            "cacert_path": null,
+            "cert_path": null,
+            "container_limits": null,
+            "debug": false,
+            "docker_host": null,
+            "dockerfile": null,
+            "filter_logger": false,
+            "force": false,
+            "http_timeout": null,
+            "key_path": null,
+            "load_path": null,
+            "name": "centos",
+            "nocache": "False",
+            "path": null,
+            "pull": true,
+            "push": false,
+            "repository": null,
+            "rm": true,
+            "ssl_version": null,
+            "state": "present",
+            "tag": "latest",
+            "timeout": null,
+            "tls": null,
+            "tls_hostname": null,
+            "tls_verify": null,
+            "use_tls": "no"
+        },
+        "module_name": "docker_image"
+    }
+}
+
+TASK [docker : create a docker container] **************************************
+task path: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/main.yml:29
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/commands/command.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089085.16-51090167580711 `" && echo ansible-tmp-1495089085.16-51090167580711="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089085.16-51090167580711 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmpCYuVbI TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089085.16-51090167580711/command.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089085.16-51090167580711/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089085.16-51090167580711/command.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-bcqovqbsypseuuqucaiyhqqppvuevbzl; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089085.16-51090167580711/command.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089085.16-51090167580711/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+changed: [172.16.101.209] => {
+    "changed": true,
+    "cmd": [
+        "docker",
+        "run",
+        "-td",
+        "centos"
+    ],
+    "delta": "0:00:00.642744",
+    "end": "2017-05-18 06:31:27.092107",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "docker run -td centos",
+            "_uses_shell": false,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "warn": true
+        },
+        "module_name": "command"
+    },
+    "rc": 0,
+    "start": "2017-05-18 06:31:26.449363",
+    "stderr": "",
+    "stdout": "19eb95b659ea7383914baaf989ea126c0c7cdba9122658d81fc14dbdc0ebd35e",
+    "stdout_lines": [
+        "19eb95b659ea7383914baaf989ea126c0c7cdba9122658d81fc14dbdc0ebd35e"
+    ],
+    "warnings": []
+}
+
+TASK [docker : Fetching the shell script that displays firstname from the file]
+task path: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/main.yml:34
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/commands/command.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089087.22-190654616481170 `" && echo ansible-tmp-1495089087.22-190654616481170="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089087.22-190654616481170 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmpbiYiYi TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089087.22-190654616481170/command.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089087.22-190654616481170/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089087.22-190654616481170/command.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-tzlftgurxtatmhiealwsprohdvpavmea; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089087.22-190654616481170/command.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089087.22-190654616481170/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+changed: [172.16.101.209] => {
+    "changed": true,
+    "cmd": "docker exec `docker ps -q -l` curl -O https://raw.githubusercontent.com/BharathNikesh/TestScripts/master/getfirstname.sh",
+    "delta": "0:00:00.405485",
+    "end": "2017-05-18 06:31:28.913602",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "docker exec `docker ps -q -l` curl -O https://raw.githubusercontent.com/BharathNikesh/TestScripts/master/getfirstname.sh",
+            "_uses_shell": true,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "warn": true
+        },
+        "module_name": "command"
+    },
+    "rc": 0,
+    "start": "2017-05-18 06:31:28.508117",
+    "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   354  100   354    0     0   1458      0 --:--:-- --:--:-- --:--:--  1462",
+    "stdout": "",
+    "stdout_lines": [],
+    "warnings": []
+}
+
+TASK [docker : Fetching the python script that displays the lastname from the file] ***
+task path: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/main.yml:37
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/commands/command.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089088.96-102978860931318 `" && echo ansible-tmp-1495089088.96-102978860931318="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089088.96-102978860931318 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmpmI92nr TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089088.96-102978860931318/command.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089088.96-102978860931318/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089088.96-102978860931318/command.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-mwalarsuhujxxjclkbhvsxrkcgjkitls; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089088.96-102978860931318/command.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089088.96-102978860931318/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+changed: [172.16.101.209] => {
+    "changed": true,
+    "cmd": "docker exec `docker ps -q -l` curl -O https://raw.githubusercontent.com/BharathNikesh/TestScripts/master/getfirstname.py",
+    "delta": "0:00:00.326410",
+    "end": "2017-05-18 06:31:30.583406",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "docker exec `docker ps -q -l` curl -O https://raw.githubusercontent.com/BharathNikesh/TestScripts/master/getfirstname.py",
+            "_uses_shell": true,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "warn": true
+        },
+        "module_name": "command"
+    },
+    "rc": 0,
+    "start": "2017-05-18 06:31:30.256996",
+    "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   416  100   416    0     0   2449      0 --:--:-- --:--:-- --:--:--  2447",
+    "stdout": "",
+    "stdout_lines": [],
+    "warnings": []
+}
+
+TASK [docker : Fetching the text file containg the full name] ******************
+task path: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/main.yml:40
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/commands/command.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089090.65-248558128579771 `" && echo ansible-tmp-1495089090.65-248558128579771="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089090.65-248558128579771 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmpj_vfE9 TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089090.65-248558128579771/command.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089090.65-248558128579771/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089090.65-248558128579771/command.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-wrdhjexwsplwuqlkkmutdojdcxcvkxeu; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089090.65-248558128579771/command.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089090.65-248558128579771/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+changed: [172.16.101.209] => {
+    "changed": true,
+    "cmd": "docker exec `docker ps -q -l` curl -O https://raw.githubusercontent.com/BharathNikesh/TestScripts/master/testfile.txt",
+    "delta": "0:00:00.330464",
+    "end": "2017-05-18 06:31:32.267011",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "docker exec `docker ps -q -l` curl -O https://raw.githubusercontent.com/BharathNikesh/TestScripts/master/testfile.txt",
+            "_uses_shell": true,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "warn": true
+        },
+        "module_name": "command"
+    },
+    "rc": 0,
+    "start": "2017-05-18 06:31:31.936547",
+    "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100    20  100    20    0     0    119      0 --:--:-- --:--:-- --:--:--   120",
+    "stdout": "",
+    "stdout_lines": [],
+    "warnings": []
+}
+
+TASK [docker : Make the script executable] *************************************
+task path: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/main.yml:43
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/commands/command.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089092.31-75045379095922 `" && echo ansible-tmp-1495089092.31-75045379095922="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089092.31-75045379095922 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmpycw3EQ TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089092.31-75045379095922/command.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089092.31-75045379095922/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089092.31-75045379095922/command.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-sguyhgswkbxcqagoczeicqkkhqyrlpnj; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089092.31-75045379095922/command.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089092.31-75045379095922/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+changed: [172.16.101.209] => {
+    "changed": true,
+    "cmd": "docker exec `docker ps -q -l` chmod 755 getfirstname.sh",
+    "delta": "0:00:00.146019",
+    "end": "2017-05-18 06:31:33.746707",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "docker exec `docker ps -q -l` chmod 755 getfirstname.sh",
+            "_uses_shell": true,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "warn": true
+        },
+        "module_name": "command"
+    },
+    "rc": 0,
+    "start": "2017-05-18 06:31:33.600688",
+    "stderr": "",
+    "stdout": "",
+    "stdout_lines": [],
+    "warnings": []
+}
+
+TASK [docker : Make the script executable] *************************************
+task path: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/main.yml:46
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/commands/command.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089093.79-143634491925517 `" && echo ansible-tmp-1495089093.79-143634491925517="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089093.79-143634491925517 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmpfLUQiM TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089093.79-143634491925517/command.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089093.79-143634491925517/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089093.79-143634491925517/command.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-irsfcrsetisaqcqtbuskrmfpetycdiod; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089093.79-143634491925517/command.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089093.79-143634491925517/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+changed: [172.16.101.209] => {
+    "changed": true,
+    "cmd": "docker exec `docker ps -q -l` chmod 755 getfirstname.py",
+    "delta": "0:00:00.151494",
+    "end": "2017-05-18 06:31:35.451349",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "docker exec `docker ps -q -l` chmod 755 getfirstname.py",
+            "_uses_shell": true,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "warn": true
+        },
+        "module_name": "command"
+    },
+    "rc": 0,
+    "start": "2017-05-18 06:31:35.299855",
+    "stderr": "",
+    "stdout": "",
+    "stdout_lines": [],
+    "warnings": []
+}
+
+TASK [docker : Execute the shell script on the remote host] ********************
+task path: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/main.yml:49
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/commands/command.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089095.52-35754568207246 `" && echo ansible-tmp-1495089095.52-35754568207246="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089095.52-35754568207246 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmpe7oGj9 TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089095.52-35754568207246/command.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089095.52-35754568207246/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089095.52-35754568207246/command.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-mcgrvevhkiiyiluoojkgstqwyhhzdjem; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089095.52-35754568207246/command.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089095.52-35754568207246/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+changed: [172.16.101.209] => {
+    "changed": true,
+    "cmd": "docker exec `docker ps -q -l` /bin/sh getfirstname.sh testfile.txt",
+    "delta": "0:00:00.150094",
+    "end": "2017-05-18 06:31:37.125428",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "docker exec `docker ps -q -l` /bin/sh getfirstname.sh testfile.txt",
+            "_uses_shell": true,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "warn": true
+        },
+        "module_name": "command"
+    },
+    "rc": 0,
+    "start": "2017-05-18 06:31:36.975334",
+    "stderr": "",
+    "stdout": "BharathNikesh",
+    "stdout_lines": [
+        "BharathNikesh"
+    ],
+    "warnings": []
+}
+
+TASK [docker : Execute the python script on the remote host] *******************
+task path: /Users/bgorla/ANSIBLE_LOCAL/roles/docker/tasks/main.yml:52
+Using module file /usr/local/Cellar/ansible/2.2.1.0/libexec/lib/python2.7/site-packages/ansible/modules/core/commands/command.py
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089097.2-10831617798635 `" && echo ansible-tmp-1495089097.2-10831617798635="` echo /tmp/.ansible-${USER}/tmp/ansible-tmp-1495089097.2-10831617798635 `" ) && sleep 0'"'"''
+<172.16.101.209> PUT /var/folders/3m/5bx19rdn7rbczp69kwcp0bqcfhngm5/T/tmpX7OCO7 TO /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089097.2-10831617798635/command.py
+<172.16.101.209> SSH: EXEC sftp -b - -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r '[172.16.101.209]'
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r 172.16.101.209 '/bin/sh -c '"'"'chmod u+x /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089097.2-10831617798635/ /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089097.2-10831617798635/command.py && sleep 0'"'"''
+<172.16.101.209> ESTABLISH SSH CONNECTION FOR USER: inkadmin
+<172.16.101.209> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o User=inkadmin -o ConnectTimeout=10 -o ControlPath=/Users/bgorla/.ansible/cp/ansible-ssh-%h-%p-%r -tt 172.16.101.209 '/bin/sh -c '"'"'sudo -H -S -n -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-pvccumtpqfuzzxdzijqhpqdfeyrwuwtg; /usr/bin/python /tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089097.2-10831617798635/command.py; rm -rf "/tmp/.ansible-inkadmin/tmp/ansible-tmp-1495089097.2-10831617798635/" > /dev/null 2>&1'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+changed: [172.16.101.209] => {
+    "changed": true,
+    "cmd": "docker exec `docker ps -q -l` /bin/python getfirstname.py testfile.txt",
+    "delta": "0:00:00.174235",
+    "end": "2017-05-18 06:31:39.213749",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "docker exec `docker ps -q -l` /bin/python getfirstname.py testfile.txt",
+            "_uses_shell": true,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "warn": true
+        },
+        "module_name": "command"
+    },
+    "rc": 0,
+    "start": "2017-05-18 06:31:39.039514",
+    "stderr": "",
+    "stdout": "The last name in the file is: Gorla",
+    "stdout_lines": [
+        "The last name in the file is: Gorla"
+    ],
+    "warnings": []
+}
+
+PLAY RECAP *********************************************************************
+172.16.101.209             : ok=14   changed=8    unreachable=0    failed=0

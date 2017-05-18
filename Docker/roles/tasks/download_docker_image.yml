@@ -1,0 +1,6 @@
+#Pull BusyBox Image
+
+- name: pull image
+  docker_image:
+    name: centos 
+    state: present

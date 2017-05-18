@@ -1,0 +1,53 @@
+---
+#### Install Docker on the Remote Host
+
+-   name: Install python setup tools
+    yum: name=python-setuptools
+    tags: docker
+
+-   name: yum Install Pypi
+    yum: name=python-pip state=latest
+    become_user: root
+    tags: docker
+
+-   name: Install docker-py
+    pip: name=docker-py
+    become_user: root
+    tags: docker
+
+-   name: Install Docker
+    yum: name=docker-io state=latest
+    tags: docker
+
+-   name: Make sure Docker is running
+    service: name=docker state=running
+    tags: docker
+
+#Download the required docker image
+-   include: download_docker_image.yml
+
+-   name: create a docker container
+    command: docker run -td centos
+
+# Fetch the scripts and execute on the container
+
+-   name: Fetching the shell script that displays firstname from the file
+    shell: docker exec `docker ps -q -l` curl -O https://raw.githubusercontent.com/BharathNikesh/TestScripts/master/getfirstname.sh
+
+-   name: Fetching the python script that displays the lastname from the file
+    shell: docker exec `docker ps -q -l` curl -O https://raw.githubusercontent.com/BharathNikesh/TestScripts/master/getfirstname.py
+
+-   name: Fetching the text file containg the full name
+    shell: docker exec `docker ps -q -l` curl -O https://raw.githubusercontent.com/BharathNikesh/TestScripts/master/testfile.txt
+
+-   name: Make the script executable
+    shell: docker exec `docker ps -q -l` chmod 755 getfirstname.sh 
+
+-   name: Make the script executable
+    shell: docker exec `docker ps -q -l` chmod 755 getfirstname.py
+
+-   name: Execute the shell script on the remote host
+    shell: docker exec `docker ps -q -l` /bin/sh getfirstname.sh testfile.txt
+
+-   name: Execute the python script on the remote host
+    shell: docker exec `docker ps -q -l` /bin/python getfirstname.py testfile.txt
