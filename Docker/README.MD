@@ -1,4 +1,4 @@
-Ansible-playbook to create a Docker container and run scripts on it
+Ansible-playbook to create a Docker container and run scripts on a remote host.
 
 Installs Docker pre-requisites
 
